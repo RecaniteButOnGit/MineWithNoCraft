@@ -8,7 +8,9 @@ execute in minecraft:overworld run time set day
 recipe take @a *
 scoreboard players add #fx_timer mwnc_calc 0
 execute in minecraft:overworld unless entity @e[type=minecraft:marker,tag=mwnc.spawn_anchor,limit=1] run summon minecraft:marker ~ 0 ~ {Tags:["mwnc.spawn_anchor"]}
-execute in minecraft:overworld unless entity @e[type=minecraft:marker,tag=mwnc.beacon_anchor,limit=1] run function minewithnocraft:init_beacon_anchor
+execute in minecraft:overworld unless entity @e[type=minecraft:marker,tag=mwnc.beacon_anchor,limit=1] unless entity @e[type=minecraft:marker,tag=mwnc.beacon_anchor_backup,limit=1] run function minewithnocraft:init_beacon_anchor
+execute in minecraft:overworld as @e[type=minecraft:marker,tag=mwnc.beacon_anchor_backup,limit=1] at @s unless entity @e[type=minecraft:marker,tag=mwnc.beacon_anchor,limit=1] run summon minecraft:marker ~ 0 ~ {Tags:["mwnc.beacon_anchor"]}
+execute in minecraft:overworld as @e[type=minecraft:marker,tag=mwnc.beacon_anchor,limit=1] at @s unless entity @e[type=minecraft:marker,tag=mwnc.beacon_anchor_backup,limit=1] run summon minecraft:marker ~ 0 ~ {Tags:["mwnc.beacon_anchor_backup"]}
 execute in minecraft:overworld as @e[type=minecraft:marker,tag=mwnc.beacon_anchor,limit=1] run tag @s add mwnc.beacon_initialized
 execute as @a run function minewithnocraft:player/migrate_item_names
 execute if score #tutorial_stage mwnc_calc matches 1.. as @a run function minewithnocraft:player/compass_enforce
