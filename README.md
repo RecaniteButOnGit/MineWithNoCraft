@@ -1,55 +1,95 @@
-# MineWithNoCraft Datapack
+# MineWithNoCraft (Minecraft Datapack)
 
-Basic starter datapack scaffold for **Minecraft Java Edition 1.21.5**.
+MineWithNoCraft is a custom survival datapack for **Minecraft Java 1.21.5** centered around:
+- selling blocks/items at a beacon,
+- buying tools and weapons with money,
+- surviving without normal crafting progression.
 
-## Structure
+## Core Rules
 
-```
-pack.mcmeta
-data/
-  minecraft/
-    tags/
-      function/
-        load.json
-        tick.json
-  minewithnocraft/
-    function/
-      load.mcfunction
-      tick.mcfunction
-```
+- Crafting is effectively disabled (`doLimitedCrafting=true` + recipes stripped every tick).
+- World is forced to daytime (`doDaylightCycle=false` + time set to day every tick).
+- Beacon location is randomized near spawn:
+  - within 10 blocks,
+  - always more than 5 blocks from spawn.
 
-## Development
+## First-Time Tutorial (new worlds)
 
-1. Copy this folder into your world's `datapacks/` directory.
-2. In-game, run `/reload`.
-3. Trigger the load function manually with:
+Fresh worlds start with no beacon, no shop book, and no money UI.
 
-   ```mcfunction
-   /function minewithnocraft:load
-   ```
+Flow:
+1. After 2 seconds: welcome message.
+2. 5 seconds later: beacon appears + compass is granted.
+3. Sell your first log at the beacon.
+4. Message prompts you to sell 4 more logs (to reach $10 total).
+5. Shop book unlocks after those 4 logs.
+6. Buy Wooden Pickaxe from the shop.
+7. Final message plays + torch is granted.
 
-## Notes
+After tutorial completion:
+- money actionbar stays active,
+- shop system stays unlocked,
+- torch enforcement begins.
 
-- Uses `pack_format: 71` for Minecraft Java **1.21.5**.
-- Uses 1.21+ singular datapack folders (`function`, `tags/function`).
-- Disables player crafting by forcing `doLimitedCrafting=true` and removing unlocked recipes every tick.
-- Rebuilds a beacon every tick at a random point chosen on load, 6-10 blocks from spawn, with a lime-glass beam column.
+Existing worlds automatically migrate to tutorial-complete state.
 
-## Selling
+## Selling System
 
-- Money is tracked in `mwnc_money` and shown above the hotbar each tick.
-- Throw item entities into the beacon column (1-block X/Z radius around the beacon).
-- Supported prices:
-  - `minecraft:dirt` = `$1` each
-  - Any item in `#minewithnocraft:sellable_wood` (`#minecraft:logs` + `#minecraft:planks`) = `$2` each
-- Stack sizes are fully supported (for example, 64 dirt = `$64`).
-- Sell burst particles now scale with sale value (`$1 => 1` particle, `$5 => 5`, capped at 256; larger sales increase burst size).
+- Drop items into the beacon sell zone (2-block horizontal radius around beam column).
+- Stack selling is supported.
+- Raw ores are auto-smelted before pricing:
+  - `raw_iron -> iron_ingot`
+  - `raw_gold -> gold_ingot`
+  - `raw_copper -> copper_ingot`
 
-## Shop Book UI
+### Sell Prices
 
-- Every player always has exactly one `Shop` written book.
-- Extra copies are removed, missing copies are restored, and dropped copies are deleted.
-- Book buttons are clickable and use `/trigger` so non-op players can buy.
-- Current buttons:
-  - `Buy Wooden Pickaxe` for `$25`
-  - `Buy Wooden Sword` for `$30`
+| Item | Price |
+|---|---:|
+| `dirt` | $1 |
+| Logs + planks (`#minewithnocraft:sellable_wood`) | $2 |
+| `cobblestone` | $2 |
+| `cobbled_deepslate` | $5 |
+| `gravel` | $4 |
+| Other stone types (`#minewithnocraft:sellable_stone_four`) | $4 |
+| `coal` | $8 |
+| `redstone` | $14 |
+| `lapis_lazuli` | $18 |
+| `copper_ingot` | $20 |
+| `iron_ingot` | $30 |
+| `gold_ingot` | $45 |
+| `diamond` | $220 |
+| `emerald` | $300 |
+
+## Shop System
+
+- Shop book appears only when near beacon (within 5 blocks on X/Z).
+- Book is non-transferable and self-cleaning (dropped/duplicate copies removed).
+- Purchases are done through clickable book buttons (`/trigger mwnc_shop`).
+- You cannot buy a tool/sword you already own (same tier).
+- Shop-bound tools cannot be permanently dropped.
+
+### Tool/Sword Prices
+
+| Tier | Pickaxe | Sword |
+|---|---:|---:|
+| Wooden | $10 | $10 |
+| Stone | $100 | $100 |
+| Iron | $2,500 | $2,500 |
+| Gold | $10,000 | $10,000 |
+| Diamond | $100,000 | $100,000 |
+| Netherite | $1,000,000 | $1,000,000 |
+
+## Player Utility Rules
+
+- Exactly one bound compass per player (starts when beacon stage begins).
+- Exactly one bound torch per player (starts after tutorial completion).
+- Slow permanent hunger support via saturation pulse (every 5 seconds).
+
+## Installation
+
+1. Copy this repo folder into your world's `datapacks/` directory (or copy only `pack.mcmeta` + `data/` as a datapack folder).
+2. Run `/reload` in-game.
+
+Pack metadata:
+- `pack_format: 71` (Minecraft Java 1.21.5)
