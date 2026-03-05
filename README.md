@@ -27,3 +27,4 @@ Mine with no Craft (MWNC) is a custom survival datapack for **Minecraft Java 1.2
 ## Installation
 
 Follow this tutorial: **https://youtu.be/f4_Ij6BpRs0**
+Or get it on Modrinth: **https://modrinth.com/datapack/mine-with-no-craft**
