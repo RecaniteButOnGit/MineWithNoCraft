@@ -1,0 +1,15 @@
+# Prevent dropping bound shop tools by immediately returning them.
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:wooden_pickaxe",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_pick_wooden:1b}}}}}] at @s run function minewithnocraft:shop/return/wooden_pickaxe
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:wooden_sword",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_sword_wooden:1b}}}}}] at @s run function minewithnocraft:shop/return/wooden_sword
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:stone_pickaxe",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_pick_stone:1b}}}}}] at @s run function minewithnocraft:shop/return/stone_pickaxe
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:stone_sword",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_sword_stone:1b}}}}}] at @s run function minewithnocraft:shop/return/stone_sword
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:stone_pickaxe",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_pick_copper:1b}}}}}] at @s run function minewithnocraft:shop/return/copper_pickaxe
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:stone_sword",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_sword_copper:1b}}}}}] at @s run function minewithnocraft:shop/return/copper_sword
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:iron_pickaxe",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_pick_iron:1b}}}}}] at @s run function minewithnocraft:shop/return/iron_pickaxe
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:iron_sword",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_sword_iron:1b}}}}}] at @s run function minewithnocraft:shop/return/iron_sword
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:golden_pickaxe",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_pick_gold:1b}}}}}] at @s run function minewithnocraft:shop/return/gold_pickaxe
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:golden_sword",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_sword_gold:1b}}}}}] at @s run function minewithnocraft:shop/return/gold_sword
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:diamond_pickaxe",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_pick_diamond:1b}}}}}] at @s run function minewithnocraft:shop/return/diamond_pickaxe
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:diamond_sword",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_sword_diamond:1b}}}}}] at @s run function minewithnocraft:shop/return/diamond_sword
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:netherite_pickaxe",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_pick_netherite:1b}}}}}] at @s run function minewithnocraft:shop/return/netherite_pickaxe
+execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:netherite_sword",components:{"minecraft:custom_data":{mwnc:{shop_bound:1b,shop_sword_netherite:1b}}}}}] at @s run function minewithnocraft:shop/return/netherite_sword
