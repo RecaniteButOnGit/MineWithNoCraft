@@ -16,9 +16,9 @@ Mine with no Craft (MWNC) is a custom survival datapack for **Minecraft Java 1.2
 | `Gravel` | $4 |
 | Other stone types | $4 |
 | `Coal` | $8 |
+| `Copper` | $10 |
 | `Redstone` | $14 |
 | `Lapis Lazuli` | $18 |
-| `Copper` | $20 |
 | `Iron` | $30 |
 | `Gold` | $45 |
 | `Diamond` | $220 |

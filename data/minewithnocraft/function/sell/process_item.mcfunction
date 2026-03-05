@@ -18,7 +18,7 @@ execute if items entity @s contents #minewithnocraft:sellable_stone_four run sco
 execute if items entity @s contents minecraft:coal run scoreboard players set #sale_value mwnc_calc 8
 execute if items entity @s contents minecraft:redstone run scoreboard players set #sale_value mwnc_calc 14
 execute if items entity @s contents minecraft:lapis_lazuli run scoreboard players set #sale_value mwnc_calc 18
-execute if items entity @s contents minecraft:copper_ingot run scoreboard players set #sale_value mwnc_calc 20
+execute if items entity @s contents minecraft:copper_ingot run scoreboard players set #sale_value mwnc_calc 10
 execute if items entity @s contents minecraft:iron_ingot run scoreboard players set #sale_value mwnc_calc 30
 execute if items entity @s contents minecraft:gold_ingot run scoreboard players set #sale_value mwnc_calc 45
 execute if items entity @s contents minecraft:diamond run scoreboard players set #sale_value mwnc_calc 220
