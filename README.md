@@ -26,5 +26,4 @@ Mine with no Craft (MWNC) is a custom survival datapack for **Minecraft Java 1.2
 
 ## Installation
 
-1. Go to Releases and copy the downloaded zip into your world's `datapacks/` directory
-2. Rejoin the world or run `/reload` in-game.
+Follow this tutorial: **https://youtu.be/f4_Ij6BpRs0**
